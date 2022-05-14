@@ -15,4 +15,4 @@ def index():
 def register():
     form=RegistrationForm()
     
-    return render_template('signUp.html')
+    return render_template('signUp.html', form = form)
