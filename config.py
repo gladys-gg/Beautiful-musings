@@ -1,7 +1,7 @@
 import os
 
 class Config:
-    pass
+    SECRET_KEY = 'hithere'
 
 
 class ProdConfig(Config):
