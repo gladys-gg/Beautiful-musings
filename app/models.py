@@ -34,7 +34,7 @@ class Post (db.Model):
     id = db.Column(db.Integer, primary_key=True)
     datePosted = db.Column(db.DateTime, nullable=False,default=datetime.utcnow)
     content = db.Column(db.Text, nullable=False)
-    user_id = db.Column(db.Integer,db.ForeignKey('user.id'),nullable=False) #Id of the post author
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable=False) #Id of the post author
     comment =  db.relationship('Comment',backref='post',lazy='dynamic')
     likes =  db.relationship('Like',backref='post',lazy='dynamic')
     dislikes =  db.relationship('Dislike',backref='post',lazy='dynamic')
@@ -48,22 +48,22 @@ def __repr__(self):
 class Comment(db.Model):
     __tablename__ = 'comments'
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer,db.ForeignKey('user.id'),nullable=False) 
-    post_id = db.Column(db.Integer, db.ForeignKey('post.id'),nullable=False)
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable=False) 
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'),nullable=False)
     comment = db.Column(db.String(100))
 
 class Like(db.Model):
     __tablename__ = 'likes'
     id = db.Column(db.Integer, primary_key=True)
-    author = db.Column(db.Integer,db.ForeignKey('user.id'),nullable=False) #Id of the user
-    post_id = db.Column(db.Integer, db.ForeignKey('post.id'),nullable=False)
+    author = db.Column(db.Integer,db.ForeignKey('users.id'),nullable=False) #Id of the user
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'),nullable=False)
 
 
 class Dislike(db.Model):
     __tablename__ = 'dislikes'
     id = db.Column(db.Integer, primary_key=True)
-    author = db.Column(db.Integer,db.ForeignKey('user.id'),nullable=False) #Id of the user
-    post_id = db.Column(db.Integer, db.ForeignKey('post.id'),nullable=False)
+    author = db.Column(db.Integer,db.ForeignKey('users.id'),nullable=False) #Id of the user
+    post_id = db.Column(db.Integer, db.ForeignKey('posts.id'),nullable=False)
 
 
 def __repr__(self):
