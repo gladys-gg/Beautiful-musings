@@ -13,11 +13,11 @@ class User(UserMixin, db.Model):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(), unique=True, nullable=False)
-    email = db.Column(db.String(), unique=True, nullable=False)
+    username = db.Column(db.String(), unique=True)
+    email = db.Column(db.String(), unique=True)
     image_file = db.Column(db.String(100), default='default.jpg')
-    password = db.Column(db.String(),nullable=False)
-    bio = db.Column(db.String(255),nullable=False)
+    password = db.Column(db.String())
+    bio = db.Column(db.String(255))
     posts = db.relationship('Post', backref='author',lazy=True) #defining the one to many relationship btn pitch and author
     comment = db.relationship('Comment', backref='user', lazy='dynamic')
     likes =  db.relationship('Like',backref='user',lazy='dynamic')
