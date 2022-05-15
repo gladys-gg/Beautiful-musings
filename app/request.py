@@ -1,9 +1,10 @@
 import requests
 from .models import Quote
+import random
 
 url = "http://quotes.stormconsultancy.co.uk/random.json"
 
-def get_quote():
+def get_random_quote():
     """
     Function to consume http request and return a Quote class instance
     """

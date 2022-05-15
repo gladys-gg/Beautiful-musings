@@ -4,16 +4,19 @@ from .forms import *
 from ..models import *
 from .. import bcrypt,db
 from flask_login import login_required, current_user, login_user,logout_user
+from ..request import get_random_quote
+
 
 # Views
 @main.route('/')
 def index():
     name = "Time to get started "
     posts = Post.query.all()
+    quote = get_random_quote()
     # context ={
     #     name: name
     # }
-    return render_template('index.html', name=name, posts = posts)
+    return render_template('index.html', name=name, posts = posts, quote = quote)
 
 @main.route('/signup',methods=['GET', 'POST'])
 def register():
