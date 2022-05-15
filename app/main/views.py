@@ -16,24 +16,6 @@ def index():
 
     return render_template('index.html', name=name, posts = posts, quote = quote)
 
-# @main.route('/signup',methods=['POST', 'GET'])
-# def register():
-#     if current_user.is_authenticated:
-#         return redirect(url_for('main.index'))
-    
-#     form=RegistrationForm()
-#     if form.validate_on_submit():
-#         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-#         user = User (username = form.username.data,
-#                     email = form.email.data,
-#                     password = hashed_password)
-#         db.session.add(user)
-#         db.session.commit()
-#         flash('your account has been created successfully.')
-#         return redirect(url_for('main.login'))
-#     # else:
-#     #     flash(f'There was an error in creating the user:(err_msg)')
-#     return render_template('signUp.html', form = form)
 
 @main.route('/register',methods = ["GET","POST"])
 def register():
@@ -45,20 +27,6 @@ def register():
         db.session.commit()
         return redirect(url_for('main.login'))
     return render_template('signUp.html',form = form)
-
-# @main.route('/signin', methods=['GET','POST'])
-# def login():    
-#     form=LoginForm()
-#     if form.validate_on_submit():
-#         user = User.query.filter_by(username=form.username.data).first()
-#         if user and bcrypt.check_password_hash(user.password, form.password.data):
-#             login_user(user,remember=form.remember.data)
-#             next_page = request.args.get('next')
-#             return redirect(next_page) if next_page else redirect(url_for('main.index'))
-#         else:
-#             flash('Login Unsuccessful. Please check your username and password', 'danger')
-    
-#     return render_template('signIn.html', form = form)
 
 @main.route('/login', methods = ['GET','POST'])
 def login():
@@ -107,11 +75,19 @@ def update_post(post_id):
     
     return render_template('updatePost.html', form = form)
 
-@main.route('/pitch/new', methods=['GET', 'POST'])
-@login_required
-def newpitch():
+# @main.route('/delete/post/<post_id>', methods=['GET', 'POST'])
+# @login_required
+# def deletePost():
+#     post=Post.query.get_or_404(post_id)
+#     form = UpdatePostForm()
+#     if form.validate_on_submit():
+#         postedComment = Comment(comment=form.comment.data,user_id = current_user.id, post_id = post_id)
+#         post_id = post_id
+#         db.session.add(postedComment)
+#         db.session.commit()
+#         flash('Comment added successfully')
     
-    return render_template('newpitch.html', form= form, legend='New Post')
+#     return render_template('newpitch.html', form= form, legend='New Post')
 
 
 @main.route('/comment/<int:post_id>',methods = ['POST','GET'])

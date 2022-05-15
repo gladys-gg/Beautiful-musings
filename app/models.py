@@ -15,8 +15,9 @@ class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(), unique=True, nullable=False)
     email = db.Column(db.String(), unique=True, nullable=False)
-    image = db.Column(db.String(), nullable=False, default='default.jpg')
+    image_file = db.Column(db.String(100), default='default.jpg')
     password = db.Column(db.String(),nullable=False)
+    bio = db.Column(db.String(255),nullable=False)
     posts = db.relationship('Post', backref='author',lazy=True) #defining the one to many relationship btn pitch and author
     comment = db.relationship('Comment', backref='user', lazy='dynamic')
     likes =  db.relationship('Like',backref='user',lazy='dynamic')

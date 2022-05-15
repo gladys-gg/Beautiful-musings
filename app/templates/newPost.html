@@ -24,6 +24,15 @@
                 <div class="form-group">
                     {{ form.submit(class="btn bg-warning") }}
                 </div>
+
+                <div class="col">
+                    {% if current_user.id == comment.user.id or current_user.id == post.author.id %}
+                    <a style="text-decoration: none" href="{{ url_for('main.deletePost', post_id=post.id) }}">
+                    <button class="btn btn-danger">Delete</button>
+                    </a>
+                {% endif %}
+        
+            </div>
             
         </form>
     </div>

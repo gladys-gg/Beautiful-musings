@@ -49,4 +49,27 @@ class CommentForm(FlaskForm):
     comment = TextAreaField('Say something', validators = [DataRequired()])
     submit = SubmitField('Comment')
     
+# class ProfileForm(FlaskForm):
+#     username = StringField('Username', validators=[DataRequired()])
+    
+#     email = StringField('Email', validators=[DataRequired(), Email()])
+    
+#     picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg','png'])])
+    
+#     bio =TextAreaField('About yourself', validators=[DataRequired()])
+    
+#     submit = SubmitField('Update')
+    
+#     def validate_username(self,username):
+#         if username.data != current_user.username:
+#             user = User.query.filter_by(username=username.data).first()
+#             if user:
+#                 raise ValidationError('That username is taken. PLease choose a different one.')
+    
+#     def validate_email(self,email):
+#         if email.data != current_user.email:
+#             user = User.query.filter_by(email=email.data).first()
+#             if user:
+#                 raise ValidationError('That email is taken. PLease choose a different one.')
+    
         
