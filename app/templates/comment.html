@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% include 'navbar.html' %}
+
+{%block content%}
+
+    <div class="container">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-sm-8">
+                <article class="media content-section" style="border:none;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;border-radius: 5px;">
+                    <div class="row">
+                            <div class="media-body">
+                                <div class="article-metadata">
+                                <div class="col">
+                                    <p class="mr-2 text-center mt-0 pt-0">{{ post.author.username }}</p>
+                                </div>
+                            </div>
+                                <p class="article-content"> <span style="color: #fea150">"</span> {{ post.content }} <span style="color: #fea150">"</span> </p>
+                            </div>
+                    </div>
+                            <div>
+                                <form method="POST" action="">
+                                    {{ form.hidden_tag() }}
+                                    <div class="row border-top">
+                                        <div class="col">
+                                            <fieldset class="form-group">
+                                                <div class="form-group mb-2">
+                                                    {{ form.comment.label(class="form-control-label") }}
+                                                    {% if form.comment.errors %}
+                                                        {{ form.comment(class="form-control form-control-lg is-invalid") }}
+                                                        <div class="invalid-feedback">
+                                                            {% for error in form.comment.errors %}
+                                                                <span>{{ error }}</span>
+                                                            {% endfor %}
+                                                        </div>
+                                                    {% else %}
+                                                        {{ form.comment(class="form-control form-control-lg") }}
+                                                    {% endif %}
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        <div class="col">
+                                        <div class="form-group pt-2 mt-2">                                                    
+                                            
+                                        {{ form.submit(class="btn  btn-outline-info button-17") }}
+                                        </div>                                                
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        <div class="pt-2">
+                            {% for comment in allComments %}
+                                <div class="row">
+                                    <div class="col">
+                                        <ul>
+                                            <li style="width:auto; list-style-type: none;">
+                                                <span>{{ comment.comment }} by <small class="text-muted">{{comment.user.username}}</small> </span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col">
+                                        {% if current_user.id == comment.user.id or current_user.id == post.author.id %}
+                                        <a style="text-decoration: none" href="{{ url_for('main.deleteComment', comment_id=comment.id) }}">
+                                    </a>
+                                    {% endif %}
+                            
+                                </div>
+                            {% endfor %}
+                            
+                        </div>
+                    </div>
+                
+                </article>
+            </div>
+            <div class="col"></div>
+            <!--COMMENT FORM-->
+        
+        </div>
+    </div>
+{% endblock %}
