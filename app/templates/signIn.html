@@ -8,9 +8,10 @@
                 
                 
                     <div class="main text-center">
-                        <form>
+                        <form method="POST" class="centerForm" action="">
                         <div class="loginbox mx-auto mt-5 w-25 p-5 bg-light border border-2 rounded">
-                    <p class="lead fw-normal mb-0 me-3">Sign to your account</p>   
+                    <p class="lead fw-normal mb-0 me-3">Sign to your account</p>  
+                        {{form.hidden_tag()}}
     
                     <!-- Email input -->
                     <div class="form-outline mb-4">
