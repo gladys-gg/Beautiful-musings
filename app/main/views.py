@@ -16,3 +16,9 @@ def register():
     form=RegistrationForm()
     
     return render_template('signUp.html', form = form)
+
+@main.route('/signin', methods=['GET','POST'])
+def login():
+    form=LoginForm()
+    
+    return render_template('signIn.html', form = form)
