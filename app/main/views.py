@@ -22,3 +22,9 @@ def login():
     form=LoginForm()
     
     return render_template('signIn.html', form = form)
+
+@main.route('/post/new', methods=['GET','POST'])
+def new_post():
+    form = PostForm()
+    
+    return render_template('newPost.html', form = form)

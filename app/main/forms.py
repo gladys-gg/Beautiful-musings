@@ -22,4 +22,11 @@ class LoginForm(FlaskForm):
     remember = BooleanField('Remember Me')
     
     submit = SubmitField('Sign In')
+    
+class PostForm(FlaskForm):
+    title = StringField('The Title:', validators = [DataRequired()])
+    content = TextAreaField('Your Content', validators = [DataRequired()])
+    submit = SubmitField('Post')
+    
+    
         
