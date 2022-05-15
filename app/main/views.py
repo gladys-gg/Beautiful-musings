@@ -28,3 +28,8 @@ def new_post():
     form = PostForm()
     
     return render_template('newPost.html', form = form)
+@main.route('/post/<int:id>/update', methods=['GET','POST'])
+def update_post(id):
+    form = UpdatePostForm()
+    
+    return render_template('updatePost.html', form = form)
