@@ -5,47 +5,35 @@
 <!--Content block-->
 {%block content%}
 <!--Registration form-->
-
-<section class="vh-100">
-                
-                
-    <div class="main text-center">
-        <form>
         <div class="loginbox mx-auto mt-5 w-25 p-5 bg-light border border-2 rounded">
-    <p class="lead fw-normal mb-0 me-3">Sign to your account</p>   
+            <form method="POST" class="centerForm" action="">
+                {{form.hidden_tag()}}
+                    <fieldset class="">
+                        <div class="form-group">
+                            <p>{{ form.username.label(class="form-control-label") }}</p>
+                            <p>{{ form.username(class="form-control-input") }}</p>
+                        </div>
+                        <div class="form-group">
+                            <p>{{ form.email.label(class="form-control-label") }}</p>
+                            <p>{{ form.email(class="form-control-input") }}</p>
+                        </div>
+                        <div class="form-group">
+                            <p>{{ form.password.label(class="form-control-label") }}</p>
+                            <p>{{ form.password(class="form-control-input") }}</p>
+                        </div>
+                        <div class="form-group">
+                            <p>{{ form.confirm_password.label(class="form-control-label") }}</p>
+                            <p>{{ form.confirm_password(class="form-control-input") }}</p>
+                        </div>
+                        <div class="form-group text-center">
+                            {{ form.submit(class="btn bg-warning") }}
+                        </div>
+                    </fieldset>
+                </form>
 
-    <!-- Email input -->
-    <div class="form-outline mb-4">
-        <p>{{ form.username.label(class="form-control-label") }}</p>
-        <p>{{ form.username(class="form-control-input") }}</p>
-    </div>
+            <div class="text-muted text-center">
+            Already signed up? <a href="{{ url_for ('main.login') }}">Login</a>
+            </div>
+        </div>
 
-    <!-- Password input -->
-    <div class="form-outline mb-3">
-        <p>{{ form.email.label(class="form-control-label") }}</p>
-        <p>{{ form.email(class="form-control-input") }}</p>
-    </div>
-
-    <div class="form-outline mb-3">
-        <p>{{ form.password.label(class="form-control-label") }}</p>
-        <p>{{ form.password(class="form-control-input") }}</p>
-    </div>
-    <div class="form-outline mb-3">
-        <p>{{ form.confirm_password.label(class="form-control-label") }}</p>
-        <p>{{ form.confirm_password(class="form-control-input") }}</p>
-    </div>
-
-    <div>
-    {{ form.submit(class="btn btn-outline-info") }}
-    </div>
-
-    </div>
-
-</form>
-
-<div class="text-muted text-center">
-Already signed up? <a href="{{ url_for ('main.login') }}">Login</a>
-</div>
-</div>
-</section>
 {% endblock %}

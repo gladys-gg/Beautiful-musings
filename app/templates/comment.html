@@ -16,7 +16,7 @@
                                     <p class="mr-2 text-center mt-0 pt-0">{{ post.author.username }}</p>
                                 </div>
                             </div>
-                                <p class="article-content"> <span style="color: #fea150">"</span> {{ post.content }} <span style="color: #fea150">"</span> </p>
+                                <p class="article-content"> <span style="color: #16db3d">"</span> {{ post.content }} <span style="color: #16db3d">"</span> </p>
                             </div>
                     </div>
                             <div>
@@ -62,7 +62,8 @@
                                     <div class="col">
                                         {% if current_user.id == comment.user.id or current_user.id == post.author.id %}
                                         <a style="text-decoration: none" href="{{ url_for('main.deleteComment', comment_id=comment.id) }}">
-                                    </a>
+                                        <button class="btn btn-danger">Delete</button>
+                                        </a>
                                     {% endif %}
                             
                                 </div>

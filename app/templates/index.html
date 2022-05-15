@@ -20,12 +20,48 @@
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="site-heading">
-            <h1>{{quote.quote}}</h1>
+            <h6>{{quote.quote}}</h6>
             <h2>{{quote.author}}</h2>
           </div>
         </div>
       </div>
     </div>
 
+      {% for post in posts %}
+      <div class="col-sm-4">
+          <article class="media content-section" style="border:none;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;border-radius: 5px;">
+              <div class="row mb-2">
+                  <div class="col">
+                              <p class="mr-2 mt-4 pt-4">{{ post.author.username }}</p>
+                  </div>
+                  <div class="col"></div>
+                  <div class="col"></div>
+                  <div class="col"></div>
+                </div>
+
+                      <div class="media-body">
+                        <p class="article-content"> <span style="color: #16db3d">"</span> {{ post.title }} <span style="color: #16db3d">"</span></p>
+                      <div class="article-metadata">
+                      
+                      </div>
+                          <p class="article-content"> <span style="color: #16db3d">"</span> {{ post.content }}  <span style="color: #16db3d">"</span></p>
+                      </div>
+            
+              <div class="media-footer">
+                  <a class="ms-5" style="text-decoration: none;" href="{{ url_for('main.comment', post_id=post.id) }}">Comment</a>
+                  </a>
+                  <a class="ms-5" style="text-decoration: none;" href="{{ url_for('main.update_post', post_id=post.id) }}">Update</a>
+                </a>
+                  <div class="pt-2 mb-2">
+                      <small class="ms-4 text-muted align-left">Posted On: <span style="color: #16db3d">{{ post.datePosted.strftime('%Y-%m-%d') }}</span></small>
+                      <span>  |  </span>
+                                
+                  </div>
+              </div>
+          </article>
+
+          
+      </div>
+{% endfor %}
 
 {% endblock%}
