@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block head %}
+{{ super() }}
+{% endblock %}
+{% block content %}
+
+<div class="col-md-4 ms-3 mt-4 card">
+    <div class="content-section">
+        <div class="media-body">
+                <h2 class="account-heading">Username: {{current_user.username}}</h2>
+                <p class="text-secondary">Your Email: {{current_user.email}}</p>
+        
+        </div>
+        <!--Form here-->
+
+        <div class="col-lg-4">
+            <form action="" method="post" class="centerForm">
+                {{form.hidden_tag()}}
+                    <fieldset class="">
+                        <legend class="border-bottom mb-4">Account Info</legend>
+                        <div class="form-group">
+                            <p>{{ form.username.label(class="form-control-label") }}</p>
+                            <p>{{ form.username(class="form-control-input") }}</p>
+                        </div>
+                        <div class="form-group">
+                            <p>{{ form.email.label(class="form-control-label p-2") }}</p>
+                            <p>{{ form.email(class="form-control-input pb-2") }}</p>
+                        </div>
+                        <div class="form-group">
+                            <p>{{ form.bio.label(class="form-control-label p-2") }}</p>
+                            <p>{{ form.bio(class="form-control-input pb-2") }}</p>
+                        </div>
+                        
+                        <div class="form-group text-center">
+                            {{ form.submit(class="btn bg-warning") }}
+                        </div>
+                    </fieldset>
+                </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}
