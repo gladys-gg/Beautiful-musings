@@ -57,6 +57,8 @@ def new_post():
         flash('Your post has been created!', 'success')
         return redirect(url_for('main.index'))
     
+
+    
     return render_template('newPost.html', form = form)
 @main.route('/post/<int:post_id>/update', methods=['GET','POST'])
 def update_post(post_id):
@@ -75,20 +77,6 @@ def update_post(post_id):
         form.content.data = post.content
     
     return render_template('updatePost.html', form = form)
-
-# @main.route('/delete/post/<post_id>', methods=['GET', 'POST'])
-# @login_required
-# def deletePost():
-#     post=Post.query.get_or_404(post_id)
-#     form = UpdatePostForm()
-#     if form.validate_on_submit():
-#         postedComment = Comment(comment=form.comment.data,user_id = current_user.id, post_id = post_id)
-#         post_id = post_id
-#         db.session.add(postedComment)
-#         db.session.commit()
-#         flash('Comment added successfully')
-    
-#     return render_template('newpitch.html', form= form, legend='New Post')
 
 
 @main.route('/comment/<int:post_id>',methods = ['POST','GET'])
