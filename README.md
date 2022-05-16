@@ -8,11 +8,11 @@ Beautiful Musings is a web application that allows users to add posts, update, d
 
 * See the post posted by other users.
 
-* Like posts.
-
 * Register to be allowed to log in to the application.
 
 * View post from the different users.
+
+* Post something on the blog
 
 ### Setup/Installation Requirements
 <hr>
@@ -27,9 +27,21 @@ Beautiful Musings is a web application that allows users to add posts, update, d
 
 5. Lastly run  $python3 manage.py to run the app.
 
-### BDD
+
+#### Technologies Used
 <hr>
 
--|-|-|
+- Python3.9.10
+- Flask2.11
+- Bootstrap
+-Postgresql
+
+#### Contact:
+
+Incase of any question or contributions, you can contact me through on Gladys Mwangi ||gladysmwangi04@yahoo.com
+
+
+#### MIT License
+Copyright (c)2022 Gladys Mwangi. All rights reserved.
 
 
