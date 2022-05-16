@@ -23,5 +23,5 @@
             self.assertTrue(len(Comment.query.all())>0)
             
     class PostModelTest(unittest.TestCase):
-        def test_save_pitch(self):
+        def test_save_post(self):
             self.assertTrue(len(Post.query.all())>0)
