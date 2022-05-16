@@ -3,12 +3,12 @@
 {% include 'navbar.html' %}
 {%block content%}
 <div class="container">
-<div class="row">
-    <marquee><h3 class="text-primary">Add or update your Post</h1> </marquee>
-    <div class="col-lg-12">
-        <form action="" method="POST" class="centerForm">
-            {{form.hidden_tag()}}
-            <fieldset>
+    <div class="row">
+        <marquee><h3 class="text-primary">Add or update your Post</h1> </marquee>
+            <div class="col-lg-12">
+                <form action="" method="POST" class="centerForm">
+                {{form.hidden_tag()}}
+                <fieldset>
                 <legend class="border-bottom mb-4">{{ legend }}</legend>
 
                 <div class="form-group">
@@ -20,12 +20,12 @@
                     <p>{{ form.content.label(class="form-control-label") }}</p>
                     <p> {{ form.content(class="form-control-input") }}</p>
                 </div>
-            </fieldset>    
+                </fieldset>    
 
                 <div class="form-group">
-                    {{ form.submit(class="btn bg-warning") }}
+                    {{ form.submit(class="btn bg-info") }}
                 </div>
-            </form>
+                </form>
         
             </div>
             

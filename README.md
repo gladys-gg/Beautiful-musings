@@ -21,9 +21,9 @@ Beautiful Musings is a web application that allows users to add posts, update, d
 
 2. $ cd app and $ python3 -m venv virtual to install the virtual environment.(install virtual environment) 
 
-3. Use this syntax ($ source venv-pitch/bin/activate) to activate the virtual environment.
+3. Use this syntax ($ source venv-musings/bin/activate) to activate the virtual environment.
 
-4. Run $ python3 -m pip install -r requirements.txt (to install all dependencies)
+4. Run  $ python3  -m pip install -r requirements.txt (to install all dependencies)
 
 5. Lastly run  $python3 manage.py to run the app.
 
@@ -34,7 +34,7 @@ Beautiful Musings is a web application that allows users to add posts, update, d
 - Python3.9.10
 - Flask2.11
 - Bootstrap
--Postgresql
+- Postgresql
 
 #### Contact:
 
