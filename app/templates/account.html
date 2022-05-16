@@ -6,11 +6,12 @@
 
 {%include 'navbar.html'%}
 
-<div class="col-md-4 ms-3 mt-4 card">
+<div class="col-md-12 ms-3 mt-4 card">
     <div class="content-section">
         <div class="media-body">
-            
-                <h2 class="account-heading">Username: {{current_user.username}}</h2>
+
+                <h3 class="font-weight-bold"> Below is your account information</h3>
+                <h5 class="account-heading">Username: {{current_user.username}}</h5>
                 <p class="text-secondary">Your Email: {{current_user.email}}</p>
                 <p class="text-secondary">Your Bio: {{current_user.bio}}</p>
 
@@ -18,11 +19,11 @@
         </div>
         <!--Form here-->
 
-        <div class="col-lg-4">
+        <div class="col-md-12">
             <form action="" method="post" class="centerForm">
                 {{form.hidden_tag()}}
                     <fieldset class="">
-                        <legend class="border-bottom mb-4">Account Info</legend>
+                        <legend class="border-bottom mb-4">Update Your Account Info</legend>
                         <div class="form-group">
                             <p>{{ form.username.label(class="form-control-label") }}</p>
                             <p>{{ form.username(class="form-control-input") }}</p>

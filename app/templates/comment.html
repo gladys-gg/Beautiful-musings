@@ -4,73 +4,65 @@
 
 {%block content%}
 
-    <div class="container mt-5">
+    <div class="container text-center mt-4">
         <div class="row">
-            <div class="col-sm-8">
-                <article class="media content-section" style="border:none;box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;border-radius: 5px;">
-                    <div class="row">
-                            <div class="media-body">
-                                <div class="article-metadata">
-                                <div class="col">
-                                    <p class="mr-2 text-center mt-0 pt-0">{{ post.author.username }}</p>
+        <div class="col-lg-8">
+            <p class="mr-2 text-center mt-0 pt-0">Post by:{{ post.author.username }}</p>
+        </div>
+        <div class="col-lg-8">
+            <p class="article-content"> <span style="color: #16db3d">"</span> {{ post.content }} <span style="color: #16db3d">"</span> </p>
+        </div>
+        <div class="col-lg-8">
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <div class="row border-top">
+                <div class="col">
+                    <fieldset class="form-group">
+                        <div class="form-group mb-2 mt-3">
+                            {{ form.comment.label(class="form-control-label") }}
+                            {% if form.comment.errors %}
+                                {{ form.comment(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback ">
+                                    {% for error in form.comment.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
                                 </div>
-                            </div>
-                                <p class="article-content"> <span style="color: #16db3d">"</span> {{ post.content }} <span style="color: #16db3d">"</span> </p>
-                            </div>
-                    </div>
-                            <div>
-                                <form method="POST" action="">
-                                    {{ form.hidden_tag() }}
-                                    <div class="row border-top">
-                                        <div class="col">
-                                            <fieldset class="form-group">
-                                                <div class="form-group mb-2">
-                                                    {{ form.comment.label(class="form-control-label") }}
-                                                    {% if form.comment.errors %}
-                                                        {{ form.comment(class="form-control form-control-lg is-invalid") }}
-                                                        <div class="invalid-feedback">
-                                                            {% for error in form.comment.errors %}
-                                                                <span>{{ error }}</span>
-                                                            {% endfor %}
-                                                        </div>
-                                                    {% else %}
-                                                        {{ form.comment(class="form-control form-control-lg") }}
-                                                    {% endif %}
-                                                </div>
-                                            </fieldset>
-                                        </div>
-                                        <div class="col">
-                                        <div class="form-group pt-2 mt-2">                                                    
-                                            
-                                        {{ form.submit(class="btn  btn-outline-info button-17") }}
-                                        </div>                                                
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        <div class="row">
-                            {% for comment in allComments %}
-                                <div class="row">
-                                    <div class="col">
-                                        <ul>
-                                            <li style="width:auto; list-style-type: none;">
-                                                <span>{{ comment.comment }} by <small class="text-muted">{{comment.user.username}}</small> </span>
-                                            </li>
-                                        </ul>
-                                        {% if current_user.id == comment.user.id or current_user.id == post.author.id %}
-                                        <a style="text-decoration: none" href="{{ url_for('main.deleteComment', comment_id=comment.id) }}">
-                                        <button class="btn btn-danger">Delete</button>
-                                        </a>
-                                    {% endif %}
-                                </div>
-                            {% endfor %}                        
+                            {% else %}
+                                {{ form.comment(class="form-control form-control-lg mt-3") }}
+                            {% endif %}
                         </div>
-                
-                </article>
+                    </fieldset>
+                </div>
+                <div class="col">
+                <div class="form-group pt-2 mt-2">                                                    
+                    
+                {{ form.submit(class="btn  btn-outline-info button-17") }}
+                </div>                                                
+                </div>
             </div>
-            <div class="col"></div>
-            <!--COMMENT FORM-->
-        
+        </form>
+      </div>
+
+      <div class="col-lg-8">
+        {% for comment in allComments %}
+            <div class="row">
+                <div class="col">
+                    <div>
+                    <ul>
+                        <li style="width:auto; list-style-type: none;">
+                            <span>{{ comment.comment }} by <small class="text-muted">{{comment.user.username}}</small> </span>
+                        </li>
+                    </ul>
+                    {% if current_user.id == comment.user.id or current_user.id == post.author.id %}
+                    <a style="text-decoration: none" href="{{ url_for('main.deleteComment', comment_id=comment.id) }}">
+                    <button class="btn btn-danger">Delete</button>
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+        {% endfor %}                        
         </div>
     </div>
+    </div>
+</div>
 {% endblock %}
