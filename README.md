@@ -17,7 +17,7 @@ Beautiful Musings is a web application that allows users to add posts, update, d
 ### Setup/Installation Requirements
 <hr>
 
-1. Open GitHub and find the repo named 'oneminutepitch' and clone it.
+1. Open GitHub and find the repo named 'beautifulmusings' and clone it.
 
 2. $ cd app and $ python3 -m venv virtual to install the virtual environment.(install virtual environment) 
 
