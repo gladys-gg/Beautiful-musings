@@ -6,16 +6,16 @@ from ..models import *
 from .. import bcrypt,db
 from flask_login import login_required, current_user, login_user,logout_user
 from ..request import get_random_quote
-
+import secrets
 
 # Views
 @main.route('/')
 def index():
-    name = "Time to get started "
+    posts_id = Post.query.order_by(Post.datePosted.desc())
     posts = Post.query.all()
     quote = get_random_quote()
-
-    return render_template('index.html', name=name, posts = posts, quote = quote)
+    
+    return render_template('index.html', posts = posts, quote = quote)
 
 
 @main.route('/register',methods = ["GET","POST"])
@@ -26,6 +26,7 @@ def register():
         user = User(email = form.email.data, username = form.username.data,password = hashed_password)
         db.session.add(user)
         db.session.commit()
+        flash(f'Account created successfully!', 'success')
         return redirect(url_for('main.login'))
     return render_template('signUp.html',form = form)
 
